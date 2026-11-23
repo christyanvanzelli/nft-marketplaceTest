@@ -179,7 +179,7 @@ export function RegisterPage() {
           <CardFooter className="flex justify-center border-t border-zinc-800/80 pt-4">
             <p className="text-sm text-zinc-400">
               Já possui uma conta?{' '}
-              <Link to="/login" className="font-medium text-violet-400 hover:underline">
+              <Link to="/login" search={{ redirect: '/' }} className="font-medium text-violet-400 hover:underline">
                 Fazer login
               </Link>
             </p>

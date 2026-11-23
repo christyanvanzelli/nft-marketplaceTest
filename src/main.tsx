@@ -4,18 +4,18 @@ import { createRoot } from 'react-dom/client' // Função que monta a aplicaçã
 import './index.css' // Estilos globais e tema escuro do Tailwind
 import App from './App' // Componente raiz com roteador e provedores
 
-// Função assíncrona que inicia o Mock Service Worker antes de renderizar a interface
+// Função assíncrona que inicia o Mock Service Worker antes de renderizar a interface (dev e produção)
 async function enableMocking() {
-  // Importa o worker configurado na pasta mocks
   const { worker } = await import('./mocks/browser')
 
-  // Inicia o Service Worker interceptando as chamadas /api/* sem bloquear recursos estáticos
   return worker.start({
+    serviceWorker: {
+      url: `${import.meta.env.BASE_URL}mockServiceWorker.js`,
+    },
     onUnhandledRequest: 'bypass',
   })
 }
 
-// Aguarda o MSW ficar pronto e só então monta o React na div #root
 enableMocking().then(() => {
   createRoot(document.getElementById('root')!).render(
     <StrictMode>

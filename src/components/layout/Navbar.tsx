@@ -233,7 +233,7 @@ export function Navbar() {
                 </Button>
               </div>
             ) : (
-              <Link to="/login">
+              <Link to="/login" search={{ redirect: '/' }}>
                 <Button size="sm" className="bg-violet-600 hover:bg-violet-500 text-white">
                   <User className="h-4 w-4 mr-1.5" />
                   Entrar

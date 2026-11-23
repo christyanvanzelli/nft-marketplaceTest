@@ -1,0 +1,19 @@
+{
+  "rewrites": [
+    {
+      "source": "/((?!mockServiceWorker\\.js|assets/).*)",
+      "destination": "/index.html"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/mockServiceWorker.js",
+      "headers": [
+        {
+          "key": "Service-Worker-Allowed",
+          "value": "/"
+        }
+      ]
+    }
+  ]
+}
